@@ -5,4 +5,4 @@ services:
     image: local/${DOCKER_TEMPLATE}
     build: .
     ports:
-      - "7442:80"
+      - "7442:3000"

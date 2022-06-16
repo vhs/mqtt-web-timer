@@ -17,13 +17,15 @@ class MQTTBeaconService {
       debug('start')
 
       if (!MQTTBeaconService.started) {
+        debug('start', 'Connecting to', mqttUri)
         MQTTBeaconService.client = MQTT.connect(mqttUri)
 
         MQTTBeaconService.client.on('connect', () => {
+          debug('start', 'Subscribing to', mqttTopic)
           MQTTBeaconService.client.subscribe(mqttTopic)
         })
 
-        MQTTBeaconService.intervalId = setInterval(() => MQTTBeaconService.sendBeacon(MQTTBeaconService.getBeaconValue()), (mqttInterval < 1000 ? mqttInterval * 1000 : mqttInterval))
+        MQTTBeaconService.intervalId = setInterval(() => MQTTBeaconService.sendBeacon(), (mqttInterval < 1000 ? mqttInterval * 1000 : mqttInterval))
 
         MQTTBeaconService.started = true
       }
@@ -48,6 +50,8 @@ class MQTTBeaconService {
     }
 
     static sendBeacon (value) {
+      value = value ?? MQTTBeaconService.getBeaconValue()
+
       if (value != null && MQTTBeaconService.client != null) {
         debug('publish', MQTTBeaconService.beaconValue)
         MQTTBeaconService.client.publish(mqttTopic, value)
