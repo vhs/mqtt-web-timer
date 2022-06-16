@@ -1,9 +1,8 @@
-import getConfig from 'next/config'
-
 import TimerService from 'src/lib/timer/service'
 import MQTTBeaconService from 'src/lib/mqtt-beacon/service'
 
-const { serverRuntimeConfig: { mqttRunningValue, mqttStoppedValue } } = getConfig()
+const mqttRunningValue = process.env.MQTT_RUNNING_VALUE ?? 'on'
+const mqttStoppedValue = process.env.MQTT_STOPPED_VALUE ?? 'off'
 
 export default function handler (req, res) {
   const { method } = req

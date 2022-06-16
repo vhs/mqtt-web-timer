@@ -10,3 +10,5 @@ services:
       - DEBUG=app:*
     env_file:
       - .env.local
+    volumes:
+      - ./public/config.json:/app/public/config.json

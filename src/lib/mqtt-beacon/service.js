@@ -1,11 +1,12 @@
-import getConfig from 'next/config'
-
 import MQTT from 'async-mqtt'
 import Debug from 'debug'
 
 const debug = Debug('app:mqtt-beacon:service')
 
-const { serverRuntimeConfig: { mqttUri, mqttTopic, mqttInterval, mqttStoppedValue } } = getConfig()
+const mqttUri = process.env.MQTT_URI ?? 'wss://test.mosquitto.org:8081/mqtt'
+const mqttTopic = process.env.MQTT_TOPIC ?? '/test/vhs/spacebus/status/space/mask-override'
+const mqttInterval = (process.env.MQTT_INTERVAL != null) ? parseInt(process.env.MQTT_INTERVAL) : 1
+const mqttStoppedValue = process.env.MQTT_STOPPED_VALUE ?? 'off'
 
 class MQTTBeaconService {
     static started = false

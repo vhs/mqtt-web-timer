@@ -2,14 +2,11 @@ import { Component } from 'react'
 
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 
-import getConfig from 'next/config'
 import Head from 'next/head'
 
 import Clock from 'src/components/Clock/Clock'
 
 import styles from 'src/styles/Home.module.css'
-
-const { publicRuntimeConfig: { title } } = getConfig()
 
 export default class Home extends Component {
   constructor (props) {
@@ -23,6 +20,7 @@ export default class Home extends Component {
   }
 
   componentDidMount () {
+    this.loadConfig()
     this.fetchTimerIntervalId = setInterval(() => this.fetchTimer(), 5000)
     this.updateTimeIntervalId = setInterval(() => this.updateTime(), 1000)
   }
@@ -30,6 +28,14 @@ export default class Home extends Component {
   componentWillUnmount () {
     clearInterval(this.fetchTimerIntervalId)
     clearInterval(this.updateTimeIntervalId)
+  }
+
+  async loadConfig () {
+    const response = await fetch('/config.json').then(res => res.json())
+
+    console.log('loading config', response)
+
+    this.setState({ ...response })
   }
 
   async fetchTimer () {
@@ -103,6 +109,8 @@ export default class Home extends Component {
   }
 
   render () {
+    const { title } = this.state
+
     return (
       <>
         <Head>
@@ -180,9 +188,14 @@ export default class Home extends Component {
               </Row>
             </Col>
           </Row>
-
         </Container>
       </>
     )
+  }
+}
+
+export async function getStaticProps (context) {
+  return {
+    props: {} // will be passed to the page component as props
   }
 }
