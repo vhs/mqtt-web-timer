@@ -11,6 +11,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+RUN cp next.config.docker.js next.config.js
+
 RUN yarn build
 
 FROM node:16-alpine AS runner
@@ -21,7 +23,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.sample.js ./next.config.js
+COPY --from=builder /app/next.config.docker.js ./next.config.js
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 

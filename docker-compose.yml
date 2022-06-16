@@ -1,5 +1,5 @@
 version: '3.4'
 
 services:
-  spacebus:
+  masks-override-page:
     image: ${DOCKER_TEMPLATE}

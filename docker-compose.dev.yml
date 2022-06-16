@@ -1,8 +1,12 @@
 version: '3.4'
 
 services:
-  spacebus:
+  masks-override-page:
     image: local/${DOCKER_TEMPLATE}
     build: .
     ports:
       - "7442:3000"
+    environment:
+      - DEBUG=app:*
+    env_file:
+      - .env.local
