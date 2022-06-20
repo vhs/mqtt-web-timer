@@ -1,10 +1,12 @@
 import { Component } from 'react'
 
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
-
+import { ToastContainer, toast } from 'react-toastify'
 import Head from 'next/head'
 
 import Clock from 'src/components/Clock/Clock'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 import styles from 'src/styles/Home.module.css'
 
@@ -55,7 +57,10 @@ export default class Home extends Component {
   }
 
   async setTimer () {
-    if (this.state.timeInput === '') return
+    if (this.state.timeInput === '') {
+      toast.error('Please enter a time')
+      return
+    }
 
     const localTime = new Date()
 
@@ -72,28 +77,38 @@ export default class Home extends Component {
   }
 
   async clearTimer (timer) {
-    await fetch('/api/timer', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
+    try {
+      await fetch('/api/timer', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
 
-    this.setState({ timer: false, timeInput: '' })
+      this.setState({ timer: false, timeInput: '' })
+
+      toast.success('Timer cleared')
+    } catch (e) {
+      toast.error('An error occured clearing the timer')
+    }
   }
 
   async updateTimer (timer) {
-    console.log('setTimer', 'timer', timer)
+    try {
+      const response = await fetch('/api/timer', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ timer })
+      }).then(res => res.json())
 
-    await fetch('/api/timer', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ timer })
-    }).then(res => res.json())
+      this.setState({ timer: response.timer })
 
-    this.setState({ timer })
+      toast.success('Timer has been set to ' + new Date(timer).toLocaleTimeString())
+    } catch (e) {
+      toast.error('An error occured updating the timer')
+    }
   }
 
   async updateTime () {
@@ -109,85 +124,100 @@ export default class Home extends Component {
   }
 
   render () {
-    const { title } = this.state
+    const { title, instructions } = this.state
 
     return (
       <>
+        <ToastContainer />
+
         <Head>
           <title>{title}</title>
           <meta name="description" content="{title}" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         <Container className={styles.container}>
           <Row>
-            <Col className="centered">
-              <h1 className={styles.title}>{title}</h1>
+            <Col></Col>
+            <Col className="centered" md={7}>
+
+              <Row>
+                <Col className="centered">
+                  <h2 className={styles.title}>{title}</h2>
+                 <p className={styles.instructions}>{instructions}</p>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="centered">
+                  Current time:<br />
+                  <Clock time={this.state.time} color="green"/>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="centered">
+                  Set until:<br />
+                  <Clock time={this.state.timer} color="red" />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col></Col>
+                <Col md={8}>
+                  <Row>
+                    <Col>
+                      Set end time:
+                    </Col>
+                  </Row>
+                  <Row className="spacious">
+                    <Col>
+                      <Form.Control className={styles.timeInput} name="timeInput" type="time" value={this.state.timeInput} onChange={this.handleChangeInput} />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Button className={styles.setButton} variant="primary" onClick={() => this.setTimer()}>Set</Button>
+                      &nbsp;
+                      <Button className={styles.clearButton} variant="primary" onClick={() => this.clearTimer()}>Clear</Button>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col></Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <Row className="spacious">
+                    <Col className="centered">
+                      <p className={styles.bumpInstructions}>If you need the time extended, click one of the buttons below.</p>
+                    </Col>
+                  </Row>
+                  <Row className="spacious">
+                    <Col md={6}>
+                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(1)}>Increase&nbsp;1&nbsp;hour</Button>
+                    </Col>
+                    <Col md={6}>
+                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(3)}>Increase&nbsp;3&nbsp;hours</Button>
+                    </Col>
+                    <Col md={6}>
+                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(6)}>Increase&nbsp;6&nbsp;hours</Button>
+                    </Col>
+                    <Col md={6}>
+                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(8)}>Increase&nbsp;8&nbsp;hours</Button>
+                    </Col>
+                    <Col md={6}>
+                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(12)}>Increase&nbsp;12&nbsp;hours</Button>
+                    </Col>
+                  </Row>
+                </Col>
+
+              </Row>
+
             </Col>
+            <Col></Col>
           </Row>
 
-          <Row>
-            <Col className="centered">
-              <Clock time={this.state.timer} color="red" />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col className="centered">
-              <Clock time={this.state.time} color="green"/>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col>
-              <Row className="spacious">
-                <Col>
-                  <Button variant="primary" onClick={() => this.bumpTimer(1)}>Increase 1 hour</Button>
-                </Col>
-              </Row>
-              <Row className="spacious">
-                <Col>
-                  <Button variant="primary" onClick={() => this.bumpTimer(3)}>Increase 3 hours</Button>
-                </Col>
-              </Row>
-              <Row className="spacious">
-                <Col>
-                  <Button variant="primary" onClick={() => this.bumpTimer(6)}>Increase 6 hours</Button>
-                </Col>
-              </Row>
-              <Row className="spacious">
-                <Col>
-                  <Button variant="primary" onClick={() => this.bumpTimer(8)}>Increase 8 hours</Button>
-                </Col>
-              </Row>
-              <Row className="spacious">
-                <Col>
-                  <Button variant="primary" onClick={() => this.bumpTimer(12)}>Increase 12 hours</Button>
-                </Col>
-              </Row>
-            </Col>
-            <Col style={{ textAlign: 'right' }}>
-              <Row>
-                <Col>
-                  Set end time:
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Control name="timeInput" type="time" value={this.state.timeInput} onChange={this.handleChangeInput} />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Button variant="primary" className="pull-right" onClick={() => this.setTimer()}>Set</Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Button variant="primary" className="pull-right" onClick={() => this.clearTimer()}>Clear</Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
         </Container>
       </>
     )

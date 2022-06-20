@@ -1,0 +1,37 @@
+.container {
+    font-size: 1.4rem;
+}
+
+.title {
+    color: #366CFF;
+}
+
+.container button {
+    border-radius: 14px;
+}
+
+.bumpInstructions {
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+.setButton, .clearButton {
+    padding: auto;
+    font: sans-serif;
+    font-size: 18px;
+    height: 45px;
+    vertical-align: middle;
+    width: 90px;
+}
+
+.increaseButton {
+    width: 100%;
+    margin: 5px 0;
+    font: sans-serif;
+    font-size: 1.3rem;
+}
+
+.timeInput {
+    text-align: center;
+    font-size: 24px;
+}

@@ -29,3 +29,7 @@ a {
 .pull-right {
   float: right;
 }
+
+.line-out {
+  width: 100%;
+}
