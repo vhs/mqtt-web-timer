@@ -33,19 +33,28 @@ export default class Home extends Component {
   }
 
   async loadConfig () {
-    const response = await fetch('/config.json').then(res => res.json())
+    try {
+      const response = await fetch('/config.json').then(res => res.json())
 
-    console.log('loading config', response)
+      console.log('loading config', response)
 
-    this.setState({ ...response })
+      this.setState({ ...response })
+    } catch (e) {
+      console.log('error loading config', e)
+      setTimeout(() => this.loadConfig(), 1000)
+    }
   }
 
   async fetchTimer () {
-    const response = await fetch('/api/timer').then(res => res.json())
+    try {
+      const response = await fetch('/api/timer').then(res => res.json())
 
-    const { timer } = response
+      const { timer } = response
 
-    this.setState({ timer })
+      this.setState({ timer })
+    } catch (e) {
+      console.log('error fetching timer', e)
+    }
   }
 
   async bumpTimer (hours) {
@@ -89,7 +98,7 @@ export default class Home extends Component {
 
       toast.success('Timer cleared')
     } catch (e) {
-      toast.error('An error occured clearing the timer')
+      toast.error('An error occurred clearing the timer')
     }
   }
 
@@ -107,7 +116,7 @@ export default class Home extends Component {
 
       toast.success('Timer has been set to ' + new Date(timer).toLocaleTimeString())
     } catch (e) {
-      toast.error('An error occured updating the timer')
+      toast.error('An error occurred updating the timer')
     }
   }
 
@@ -194,20 +203,17 @@ export default class Home extends Component {
                     </Col>
                   </Row>
                   <Row className="spacious">
-                    <Col md={6}>
+                    <Col xs={6}>
                       <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(1)}>Increase&nbsp;1&nbsp;hour</Button>
                     </Col>
-                    <Col md={6}>
+                    <Col xs={6}>
                       <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(3)}>Increase&nbsp;3&nbsp;hours</Button>
                     </Col>
-                    <Col md={6}>
+                    <Col xs={6}>
                       <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(6)}>Increase&nbsp;6&nbsp;hours</Button>
                     </Col>
-                    <Col md={6}>
+                    <Col xs={6}>
                       <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(8)}>Increase&nbsp;8&nbsp;hours</Button>
-                    </Col>
-                    <Col md={6}>
-                      <Button className={styles.increaseButton} variant="primary" onClick={() => this.bumpTimer(12)}>Increase&nbsp;12&nbsp;hours</Button>
                     </Col>
                   </Row>
                 </Col>

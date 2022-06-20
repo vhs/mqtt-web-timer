@@ -1,37 +1,56 @@
 .container {
-    font-size: 1.4rem;
+    font-size  : 1.4rem;
+    margin-top : 25px;
+    font-family: "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .title {
-    color: #366CFF;
+    color      : #366CFF;
+    font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+    font-size  : 1.8rem !important;
+    font-weight: bold;
+}
+
+.instructions {
+    font-size  : 1.2rem;
+    font-family: "Helvetica Neue Regular", Helvetica, Arial, sans-serif;
 }
 
 .container button {
     border-radius: 14px;
+    font-size    : 1.3rem;
+    height       : 45px;
+}
+
+.container button:active,
+.container button:focus {
+    background-color: #0B1DFD;
 }
 
 .bumpInstructions {
-    padding-left: 3vw;
+    padding-left : 3vw;
     padding-right: 3vw;
 }
 
-.setButton, .clearButton {
-    padding: auto;
-    font: sans-serif;
-    font-size: 18px;
-    height: 45px;
+.setButton,
+.clearButton {
+    padding       : inherit;
+    font-size     : 1.2rem !important;
     vertical-align: middle;
-    width: 90px;
+    text-align    : center;
+    width         : 90px;
 }
 
 .increaseButton {
-    width: 100%;
-    margin: 5px 0;
-    font: sans-serif;
-    font-size: 1.3rem;
+    width     : 100%;
+    margin    : 5px 0;
+    font-size : 1.2rem !important;
+    padding   : auto;
+    text-align: center;
+    height    : 40px !important;
 }
 
 .timeInput {
     text-align: center;
-    font-size: 24px;
+    font-size : 1.6rem;
 }

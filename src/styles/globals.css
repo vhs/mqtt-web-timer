@@ -9,10 +9,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .centered {
   text-align: center;
 }
@@ -32,4 +28,13 @@ a {
 
 .line-out {
   width: 100%;
+}
+
+:root {
+  --toastify-toast-width: 100% !important;
+}
+
+.Toastify__toast-container {
+  right: 0px !important;
+  top  : 0px !important;
 }
