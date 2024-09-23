@@ -1,36 +1,37 @@
 {
-  "name": "mqtt-web-timer",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/node": "^18.0.0",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "async-mqtt": "^2.6.2",
-    "autoprefixer": "^10.4.7",
-    "bootstrap": "5.2.0-beta1",
-    "debug": "^4.3.4",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-jest": "^26.5.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "moment": "^2.29.4",
-    "next": "14.1.1",
-    "postcss": "^8.4.14",
-    "react": "18.2.0",
-    "react-bootstrap": "^2.4.0",
-    "react-dom": "18.2.0",
-    "react-toastify": "^9.0.4"
-  },
-  "devDependencies": {
-    "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
-  }
+    "name": "mqtt-web-timer",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@types/node": "^18.0.0",
+        "@types/react": "^18.0.12",
+        "@types/react-dom": "^18.0.5",
+        "async-mqtt": "^2.6.2",
+        "autoprefixer": "^10.4.7",
+        "bootstrap": "5.2.0-beta1",
+        "debug": "^4.3.4",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-jest": "^26.5.3",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-standard": "^5.0.0",
+        "moment": "^2.29.4",
+        "next": "14.1.1",
+        "postcss": "^8.4.14",
+        "react": "18.2.0",
+        "react-bootstrap": "^2.4.0",
+        "react-dom": "18.2.0",
+        "react-toastify": "^9.0.4"
+    },
+    "devDependencies": {
+        "eslint": "8.17.0",
+        "eslint-config-next": "12.1.6"
+    },
+    "packageManager": "yarn@1.22.22"
 }
