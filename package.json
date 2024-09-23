@@ -16,11 +16,6 @@
         "autoprefixer": "^10.4.7",
         "bootstrap": "5.2.0-beta1",
         "debug": "^4.3.4",
-        "eslint-config-standard": "^17.0.0",
-        "eslint-plugin-jest": "^26.5.3",
-        "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-promise": "^6.0.0",
-        "eslint-plugin-standard": "^5.0.0",
         "moment": "^2.29.4",
         "next": "14.1.1",
         "postcss": "^8.4.14",
@@ -29,9 +24,19 @@
         "react-dom": "18.2.0",
         "react-toastify": "^9.0.4"
     },
+    "packageManager": "yarn@1.22.22",
     "devDependencies": {
         "eslint": "8.17.0",
-        "eslint-config-next": "12.1.6"
-    },
-    "packageManager": "yarn@1.22.22"
+        "eslint-config-next": "12.1.6",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-jest": "^26.5.3",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-standard": "^5.0.0",
+        "prettier": "^3.3.3",
+        "stylelint": "^16.9.0",
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-prettier": "^5.0.2"
+    }
 }

@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
-  masks-override-page:
-    image: ${DOCKER_TEMPLATE}
+    masks-override-page:
+        image: ${DOCKER_TEMPLATE}

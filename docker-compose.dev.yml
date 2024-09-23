@@ -1,14 +1,12 @@
-version: '3.4'
-
 services:
-  masks-override-page:
-    image: local/${DOCKER_TEMPLATE}
-    build: .
-    ports:
-      - "7442:3000"
-    environment:
-      - DEBUG=app:*
-    env_file:
-      - .env.local
-    volumes:
-      - ./public/config.json:/app/public/config.json
+    masks-override-page:
+        image: local/${DOCKER_TEMPLATE}
+        build: .
+        ports:
+            - '7442:3000'
+        environment:
+            - DEBUG=app:*
+        env_file:
+            - .env.local
+        volumes:
+            - ./public/config.json:/app/public/config.json
