@@ -7,15 +7,9 @@
         "target": "es2020",
         "module": "es2015",
         "paths": {
-            "@/components/*": [
-                "components/*"
-            ],
-            "@/styles/*": [
-                "styles/*"
-            ],
-            "@/pages/*": [
-                "pages/*"
-            ]
+            "@/components/*": ["components/*"],
+            "@/styles/*": ["styles/*"],
+            "@/pages/*": ["pages/*"]
         }
     },
     "exclude": [
@@ -28,14 +22,9 @@
         ".npm",
         ".yarn"
     ],
-    "include": [
-        "."
-    ],
+    "include": ["."],
     "typeAcquisition": {
         "enable": true,
-        "include": [
-            "react",
-            "react-dom"
-        ]
+        "include": ["react", "react-dom"]
     }
 }

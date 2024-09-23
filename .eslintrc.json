@@ -13,7 +13,8 @@
         "eslint-config-next",
         "plugin:react/recommended",
         "eslint:recommended",
-        "next/core-web-vitals"
+        "next/core-web-vitals",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": 2020,
@@ -30,19 +31,11 @@
         "React": "readonly",
         "fetch": true
     },
-    "plugins": [
-        "promise"
-    ],
+    "plugins": ["promise"],
     "settings": {
         "import/resolver": {
             "node": {
-                "paths": [
-                    "components",
-                    "lib",
-                    "pages",
-                    "types",
-                    "."
-                ]
+                "paths": ["components", "lib", "pages", "types", "."]
             }
         }
     },
@@ -55,10 +48,7 @@
                 "enforceForClassMembers": true
             }
         ],
-        "array-bracket-spacing": [
-            "error",
-            "never"
-        ],
+        "array-bracket-spacing": ["error", "never"],
         "array-callback-return": [
             "error",
             {
@@ -73,10 +63,7 @@
                 "after": true
             }
         ],
-        "block-spacing": [
-            "error",
-            "always"
-        ],
+        "block-spacing": ["error", "always"],
         "brace-style": [
             "error",
             "1tbs",
@@ -87,9 +74,7 @@
         "camelcase": [
             "error",
             {
-                "allow": [
-                    "^UNSAFE_"
-                ],
+                "allow": ["^UNSAFE_"],
                 "properties": "never",
                 "ignoreGlobals": true
             }
@@ -111,10 +96,7 @@
                 "after": true
             }
         ],
-        "comma-style": [
-            "error",
-            "last"
-        ],
+        "comma-style": ["error", "last"],
         "computed-property-spacing": [
             "error",
             "never",
@@ -123,15 +105,9 @@
             }
         ],
         "constructor-super": "error",
-        "curly": [
-            "error",
-            "multi-line"
-        ],
+        "curly": ["error", "multi-line"],
         "default-case-last": "error",
-        "dot-location": [
-            "error",
-            "property"
-        ],
+        "dot-location": ["error", "property"],
         "dot-notation": [
             "error",
             {
@@ -146,10 +122,7 @@
                 "null": "ignore"
             }
         ],
-        "func-call-spacing": [
-            "error",
-            "never"
-        ],
+        "func-call-spacing": ["error", "never"],
         "generator-star-spacing": [
             "error",
             {
@@ -224,10 +197,7 @@
                 "exceptAfterSingleLine": true
             }
         ],
-        "multiline-ternary": [
-            "error",
-            "always-multiline"
-        ],
+        "multiline-ternary": ["error", "always-multiline"],
         "new-cap": [
             "error",
             {
@@ -272,10 +242,7 @@
         "no-extend-native": "error",
         "no-extra-bind": "error",
         "no-extra-boolean-cast": "error",
-        "no-extra-parens": [
-            "error",
-            "functions"
-        ],
+        "no-extra-parens": ["error", "functions"],
         "no-fallthrough": "error",
         "no-floating-decimal": "error",
         "no-func-assign": "error",
@@ -301,24 +268,9 @@
             "error",
             {
                 "groups": [
-                    [
-                        "==",
-                        "!=",
-                        "===",
-                        "!==",
-                        ">",
-                        ">=",
-                        "<",
-                        "<="
-                    ],
-                    [
-                        "&&",
-                        "||"
-                    ],
-                    [
-                        "in",
-                        "instanceof"
-                    ]
+                    ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+                    ["&&", "||"],
+                    ["in", "instanceof"]
                 ],
                 "allowSamePrecedence": true
             }
@@ -349,10 +301,7 @@
             }
         ],
         "no-regex-spaces": "error",
-        "no-return-assign": [
-            "error",
-            "except-parens"
-        ],
+        "no-return-assign": ["error", "except-parens"],
         "no-self-assign": [
             "error",
             {
@@ -423,10 +372,7 @@
                 "consistent": true
             }
         ],
-        "object-curly-spacing": [
-            "error",
-            "always"
-        ],
+        "object-curly-spacing": ["error", "always"],
         "object-property-newline": [
             "error",
             {
@@ -471,10 +417,7 @@
                 "disallowRedundantWrapping": true
             }
         ],
-        "quote-props": [
-            "error",
-            "as-needed"
-        ],
+        "quote-props": ["error", "as-needed"],
         "quotes": [
             "error",
             "single",
@@ -483,14 +426,8 @@
                 "allowTemplateLiterals": false
             }
         ],
-        "rest-spread-spacing": [
-            "error",
-            "never"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
+        "rest-spread-spacing": ["error", "never"],
+        "semi": ["error", "never"],
         "semi-spacing": [
             "error",
             {
@@ -498,18 +435,9 @@
                 "after": true
             }
         ],
-        "space-before-blocks": [
-            "error",
-            "always"
-        ],
-        "space-before-function-paren": [
-            "error",
-            "always"
-        ],
-        "space-in-parens": [
-            "error",
-            "never"
-        ],
+        "space-before-blocks": ["error", "always"],
+        "space-before-function-paren": ["error", "always"],
+        "space-in-parens": ["error", "never"],
         "space-infix-ops": "error",
         "space-unary-ops": [
             "error",
@@ -523,13 +451,7 @@
             "always",
             {
                 "line": {
-                    "markers": [
-                        "*package",
-                        "!",
-                        "/",
-                        ",",
-                        "="
-                    ]
+                    "markers": ["*package", "!", "/", ",", "="]
                 },
                 "block": {
                     "balanced": true,
@@ -541,25 +463,14 @@
                         "::",
                         "flow-include"
                     ],
-                    "exceptions": [
-                        "*"
-                    ]
+                    "exceptions": ["*"]
                 }
             }
         ],
         "symbol-description": "error",
-        "template-curly-spacing": [
-            "error",
-            "never"
-        ],
-        "template-tag-spacing": [
-            "error",
-            "never"
-        ],
-        "unicode-bom": [
-            "error",
-            "never"
-        ],
+        "template-curly-spacing": ["error", "never"],
+        "template-tag-spacing": ["error", "never"],
+        "unicode-bom": ["error", "never"],
         "use-isnan": [
             "error",
             {
@@ -580,14 +491,8 @@
                 "functionPrototypeMethods": true
             }
         ],
-        "yield-star-spacing": [
-            "error",
-            "both"
-        ],
-        "yoda": [
-            "error",
-            "never"
-        ],
+        "yield-star-spacing": ["error", "both"],
+        "yoda": ["error", "never"],
         "import/export": "error",
         "import/first": "error",
         "import/no-absolute-path": [
@@ -608,12 +513,7 @@
         "react/jsx-filename-extension": [
             1,
             {
-                "extensions": [
-                    ".js",
-                    ".jsx",
-                    ".ts",
-                    ".tsx"
-                ]
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }
         ]
     }
