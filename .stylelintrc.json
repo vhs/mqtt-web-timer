@@ -1,3 +1,12 @@
 {
-    "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"]
+    "$schema": "https://json.schemastore.org/stylelintrc.json",
+    "plugins": ["stylelint-prettier"],
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-prettier/recommended",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": true
+    }
 }
